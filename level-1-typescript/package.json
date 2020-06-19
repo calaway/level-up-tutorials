@@ -1,0 +1,16 @@
+{
+  "devDependencies": {
+    "typescript": "^3.9.5"
+  },
+  "name": "level-1-typescript",
+  "description": "## 1 What Is TypeScript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {},
+  "scripts": {
+    "start": "parcel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
