@@ -14,9 +14,35 @@ npm install -g parcel-bundler
 ```
 
 What we did:
+
 1. Set up a basic html template in `index.html`.
 1. Create `index.ts` with a "Hello World" log and source the script from `index.html`.
 1. Create a `package.json` with an npm script for `parcel index.html`.
 1. Compile the project and start the server with `npm start.
 1. View our Hello World at http://localhost:1234.
 
+## 3 Basic Types
+
+This section discussed TS's basic types ([docs](https://www.typescriptlang.org/docs/handbook/basic-types.html)). Here are some examples:
+
+```ts
+const isOpen: boolean = false;
+
+const myName: string = "Calaway";
+
+const myAge: number = 36.6;
+
+const list: number[] = [0, 1, 2];
+
+const tuple: [string, number, boolean] = ["Calaway", 32, false];
+
+enum Job {
+  WebDev,
+  WebDesigner,
+  PM,
+}
+const job = Job.WebDev;
+
+const phone: any = "Pixel";
+const tablet: never = 3; // Error: Type '3' is not assignable to type 'never'.ts
+```
