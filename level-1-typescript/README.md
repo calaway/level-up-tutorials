@@ -46,3 +46,40 @@ const job = Job.WebDev;
 const phone: any = "Pixel";
 const tablet: never = 3; // Error: Type '3' is not assignable to type 'never'.ts
 ```
+
+## 4 TypeScript At Compile Time With Parcel
+
+You could use the compiler from the TS project TSC (TypeScript Compiler), but we're choosing Parcel for the nice features that come along with it, and Parcel will end up using the TSC under the hood.
+
+```bash
+# Install the TS plugin and bundler for Parcel
+npm install --save-dev parcel-plugin-typescript
+npm install --save-dev --save-exact parcel-bundler@1.9.4 # Lock in this version due to a bug that hasn't been resolved.
+```
+
+If this worked you should now get a compile time error on
+
+```ts
+const tablet: never = 3;
+```
+
+of
+
+> `Type '3' is not assignable to type 'never'.`
+
+Fix it by changing the type to `number` or `any`.
+
+## 5 Functions In TypeScript
+
+You can declare the type of both the inputs and the outputs of a function.
+
+```ts
+const sayWord = (word: string): string => {
+  return word;
+};
+
+sayWord("hello");
+sayWord("3");
+```
+
+In this example we are declaring the input `word` to be of type `string`, as well as the return value. If either the input or the output is not a string it will fail at compile time.
