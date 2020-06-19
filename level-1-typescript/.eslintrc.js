@@ -4,7 +4,8 @@ module.exports = {
         "es2020": true
     },
     "extends": [
-        "airbnb-base"
+        "airbnb-base",
+        "prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -12,8 +13,10 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "prettier"
     ],
     "rules": {
+        "prettier/prettier": ["error"]
     }
 };
