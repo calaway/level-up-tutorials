@@ -200,6 +200,150 @@ myCat({ name: "Bugsy" }); // 👍
 myCat({ age: 11 }); // Argument of type '{ age: number; }' is not assignable to parameter of type 'Cat'. Property 'name' is missing in type '{ age: number; }' but required in type 'Cat'.
 ```
 
+## 10 Enums
+
+Enums allow you to give more friendly names to sets of numeric values.
+
+```ts
+// numerical enum
+enum Permission {
+  Read, // 0
+  Write, // 1
+  Execute, // 2
+}
+
+console.log("Permission.Execute: ", Permission.Execute); // Returns the index: 2
+const createPermission = (PermissionType: Permission) => {};
+createPermission("Read"); // Argument of type '"Read"' is not assignable to parameter of type 'Permission'.
+createPermission(Permission.Read); // 👍
+
+// string enum
+enum Permission2 {
+  Read = "READ",
+  Write = "WRITE",
+  Execute = "EXECUTE",
+}
+
+console.log("Permission2.Execute: ", Permission2.Execute); // EXECUTE
+const createPermission2 = (PermissionType: Permission2) => {};
+createPermission2(Permission.Read); // Argument of type 'Permission.Read' is not assignable to parameter of type 'Permission2'.
+createPermission2(Permission2.Read); // 👍
+```
+
+## 11 Classes In TypeScript
+
+```ts
+class Team {
+  teamName: string;
+  // public teamName: string; // same as above, public is implied
+  // private teamName: string; // prevents outside usage
+  // readonly teamName: string; // prevents from being changed
+
+  constructor(teamName) {
+    this.teamName = teamName;
+  }
+
+  score(): string {
+    console.log("gooooal");
+    return "goal!";
+  }
+}
+
+const redWings = new Team("Red Wings");
+redWings.score();
+redWings.teamName;
+```
+
+## 12 Modules In TypeScript
+
+Let's extract our interface and enums out to a module.
+
+Before refactor:
+
+```ts
+// ./index.ts
+
+// Interfaces
+interface Cat {
+  name: string;
+  age?: number; // ? optional param
+}
+
+const myCat = ({ name, age }: Cat): Cat => {
+  console.log(`My cat's name is ${name} and he is ${age} years old`);
+  return { name, age };
+};
+
+myCat({ name: "Bugsy", age: 11 }); // 👍
+
+// Enums
+enum Permission {
+  Read, // 0
+  Write, // 1
+  Execute, // 2
+}
+
+const createPermission = (PermissionType: Permission) => {};
+createPermission(Permission.Read); // 👍
+
+// string enum
+enum Permission2 {
+  Read = "READ",
+  Write = "WRITE",
+  Execute = "EXECUTE",
+}
+
+const createPermission2 = (PermissionType: Permission2) => {};
+createPermission2(Permission2.Read); // 👍
+```
+
+After refactor:
+
+```ts
+// ./src/interfaces.ts
+
+export default interface Cat {
+  name: string;
+  age?: number; // ? optional param
+}
+
+// numerical enum
+export enum Permission {
+  Read, // 0
+  Write, // 1
+  Execute, // 2
+}
+
+// string enum
+export enum Permission2 {
+  Read = "READ",
+  Write = "WRITE",
+  Execute = "EXECUTE",
+}
+```
+
+```ts
+// ./index.ts
+
+import Cat, { Permission, Permission2 } from "./src/interfaces";
+
+// Interfaces
+const myCat = ({ name, age }: Cat): Cat => {
+  console.log(`My cat's name is ${name} and he is ${age} years old`);
+  return { name, age };
+};
+
+myCat({ name: "Bugsy", age: 11 }); // 👍
+
+// Enums
+const createPermission = (PermissionType: Permission) => {};
+createPermission(Permission.Read); // 👍
+
+// string enum
+const createPermission2 = (PermissionType: Permission2) => {};
+createPermission2(Permission2.Read); // 👍
+```
+
 .
 
 .
