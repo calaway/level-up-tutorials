@@ -83,3 +83,53 @@ sayWord("3");
 ```
 
 In this example we are declaring the input `word` to be of type `string`, as well as the return value. If either the input or the output is not a string it will fail at compile time.
+
+## 6 Optional, Default & Rest Params
+
+### ? For Optional Params
+
+Say we want the parameter to be optional. Our code will now fail the compiler.
+
+```ts
+const sayWord = (word: string): string => {
+  console.log(word || "Hello");
+  return word || "Hello";
+};
+
+sayWord(); // Error: Expected 1 arguments, but got 0.
+```
+
+To declare the parameter optional, add a `?` after it.
+
+```ts
+const sayWord = (word?: string): string => {
+// ...
+```
+
+### Default Params
+
+```ts
+const sayWord = (word = "Hello"): string => {
+  console.log(word);
+  return word;
+};
+
+sayWord();
+```
+
+This will just work with no type declared for `word` because TS knows `'Hello'` is of type `string`. So the default parameter also functions as the type declaration.
+
+### Rest Syntax
+
+```ts
+const sayWord = (word = "Hello", ...otherStuff: string[]): string => {
+  console.log(otherStuff);
+  return word;
+};
+
+sayWord("foo", "bar", "baz"); // logged: ["bar", "baz"]
+```
+
+So the "rest" that is spread into the params is treated as an array and can be declared as such.
+
+Note: Named parameters will be discussed later with the topic of interface.

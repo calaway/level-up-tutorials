@@ -19,10 +19,10 @@ const phone: any = "Pixel";
 
 // Functions in TypeScript
 
-const sayWord = (word: string): string => {
-  console.log(word);
+const sayWord = (word = "Hello", ...otherStuff: string[]): string => {
+  console.log(otherStuff);
   return word;
 };
 
-sayWord("hello");
+sayWord("foo", "bar", "baz");
 sayWord("3");
