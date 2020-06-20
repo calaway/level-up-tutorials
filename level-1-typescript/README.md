@@ -133,3 +133,36 @@ sayWord("foo", "bar", "baz"); // logged: ["bar", "baz"]
 So the "rest" that is spread into the params is treated as an array and can be declared as such.
 
 Note: Named parameters will be discussed later with the topic of interface.
+
+## 7 Implicit Types
+
+```ts
+let newName = "Scott";
+newName = "Wes";
+newName = 10; // Type '10' is not assignable to type 'string'.
+
+let newNameTwo = newName; // Infers string type from initial implicit declaration, not current value
+newNameTwo = 10; // Type '10' is not assignable to type 'string'.
+```
+
+It's probably preferable to be explicit anyway.
+
+```ts
+let newName: string = "Scott";
+```
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.

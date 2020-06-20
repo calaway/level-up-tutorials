@@ -26,3 +26,12 @@ const sayWord = (word = "Hello", ...otherStuff: string[]): string => {
 
 sayWord("foo", "bar", "baz");
 sayWord("3");
+
+// Implicit Types
+
+let newName = "Scott";
+newName = "Wes";
+newName = 10; // Type '10' is not assignable to type 'string'.
+
+let newNameTwo = newName; // Infers string type from initial implicit declaration, not current value
+newNameTwo = 10; // Type '10' is not assignable to type 'string'.
