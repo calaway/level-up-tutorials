@@ -106,3 +106,18 @@ const outputInput = <T>(arg: T): T => {
 
 outputInput("hi");
 outputInput(3);
+
+// #15 Duck Typing & Classes with Interfaces
+class Dancer implements Cat {
+  name: string;
+  age?: number;
+}
+
+let ElNino: Cat = new Dancer();
+
+const fake = {
+  name: "Scott",
+  year: 30,
+};
+
+ElNino = fake; // Can be assigned even though fake is not a Cat, because fake has all the required properties of a Cat.
