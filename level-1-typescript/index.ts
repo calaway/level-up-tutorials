@@ -53,3 +53,19 @@ dog = "Lucie"; // 👍
 dog = 10; // Type '10' is not assignable to type 'string'.
 dog = false; // Type 'false' is not assignable to type 'string'.
 dog = undefined; // 👍
+
+// Interfaces
+
+interface Cat {
+  name: string;
+  age?: number; // ? optional param
+}
+
+const myCat = ({ name, age }: Cat): Cat => {
+  console.log(`My cat's name is ${name} and he is ${age} years old`);
+  return { name, age };
+};
+
+myCat({ name: "Bugsy", age: 11 }); // 👍
+myCat({ name: "Bugsy" }); // 👍
+myCat({ age: 11 }); // Argument of type '{ age: number; }' is not assignable to parameter of type 'Cat'. Property 'name' is missing in type '{ age: number; }' but required in type 'Cat'.
