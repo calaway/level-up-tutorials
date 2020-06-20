@@ -151,6 +151,35 @@ It's probably preferable to be explicit anyway.
 let newName: string = "Scott";
 ```
 
+## 8 Union Types
+
+Use the pipe operator (`|`) for union types, (i.e. `or` relationship).
+
+```ts
+const makeMargin = (x: number | string): string => {
+  return `margin: ${x}px`;
+};
+
+makeMargin(10);
+makeMargin("10");
+makeMargin(false); // Argument of type 'false' is not assignable to parameter of type 'string | number'.
+```
+
+### Null Types
+
+`null` and `undefined` are valid for any types by default.
+
+```ts
+let dog: string;
+dog = null; // 👍
+dog = "Lucie"; // 👍
+dog = 10; // Type '10' is not assignable to type 'string'.
+dog = false; // Type 'false' is not assignable to type 'string'.
+dog = undefined; // 👍
+```
+
+Note: there is a "strict null check" configuration to disable this default behavior.
+
 .
 
 .
