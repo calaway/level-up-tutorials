@@ -344,6 +344,10 @@ const createPermission2 = (PermissionType: Permission2) => {};
 createPermission2(Permission2.Read); // 👍
 ```
 
+## 13 TSC
+
+So far we've been using Parcel to compile our code, which uses the TS compiler `tsc` under the hood. In this PR we set up a tsconfig file and npm script so we can compile directly using `npm run tsc`.
+
 .
 
 .

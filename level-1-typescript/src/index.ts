@@ -1,4 +1,4 @@
-import Cat, { Permission, Permission2 } from "./src/interfaces";
+import Cat, { Permission, Permission2 } from "./interfaces";
 
 const isOpen: boolean = false;
 
