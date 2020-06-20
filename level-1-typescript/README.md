@@ -348,6 +348,20 @@ createPermission2(Permission2.Read); // 👍
 
 So far we've been using Parcel to compile our code, which uses the TS compiler `tsc` under the hood. In this PR we set up a tsconfig file and npm script so we can compile directly using `npm run tsc`.
 
+## 14 Generics
+
+Here is an example where the function must have the same type of input and output, but is flexible enough to not define exactly what time in advance. Scott says not to worry if this doens't seem useful now. You'll know when you need it.
+
+```ts
+// `T` is user defined, not a reserved word
+const outputInput = <T>(arg: T): T => {
+  return arg;
+};
+
+outputInput("hi");
+outputInput(3);
+```
+
 .
 
 .
